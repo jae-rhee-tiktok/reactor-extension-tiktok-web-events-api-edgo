@@ -1,0 +1,116 @@
+{
+  "displayName": "TikTok Web Events API Extension",
+  "name": "tiktok_events_api_extension",
+  "iconPath": "resources/icons/cloud-connector.svg",
+  "version": "1.0.2",
+  "description": "Send web events to TikTok Web Events API.",
+  "author": {
+    "name": "Adobe Systems",
+    "url": "http://adobe.com",
+    "email": "reactor@adobe.com"
+  },
+  "platform": "edge",
+  "viewBasePath": "dist/",
+  "configuration": {
+    "viewPath": "configuration/configuration.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "pixelCode": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["pixelCode", "accessToken"]
+    }
+  },
+  "actions": [
+    {
+      "name": "send_eapi_data",
+      "displayName": "Send TikTok Web Events API Event",
+      "libPath": "src/lib/actions/sendEapiData.js",
+      "viewPath": "actions/sendEapiData.html",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "boolean"
+          },
+          "ttp": {
+            "type": "string"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "ttclid": {
+            "type": "string"
+          },
+          "pageUrl": {
+            "type": "string"
+          },
+          "pageReferrerUrl": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "contentType": {
+            "type": "string"
+          },
+          "contentId": {
+            "type": "string"
+          },
+          "contentCategory": {
+            "type": "string"
+          },
+          "contentName": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["event", "timestamp", "pageUrl"]
+      }
+    }
+  ]
+}
