@@ -90,6 +90,8 @@ export default function ServerEventParametersFields() {
             <WrappedComponent
               key={name}
               name={name}
+              component={TextField}
+              minWidth="size-4600"
               width="size-4600"
               label={label}
               description={description}

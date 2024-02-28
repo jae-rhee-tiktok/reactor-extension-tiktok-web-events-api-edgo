@@ -97,7 +97,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
   return {
     method: 'POST',
     headers: requestHeaders,
-    body: requestBody
+    body: JSON.stringify(requestBody)
   };
 };
 

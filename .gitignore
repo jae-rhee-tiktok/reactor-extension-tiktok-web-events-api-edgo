@@ -7,3 +7,4 @@ dist
 adobe-reactor-extension-cloud-connector-edge-*.tgz
 package-adobe-cloud-connector-*.zip
 .eslintcache
+.DS_Store

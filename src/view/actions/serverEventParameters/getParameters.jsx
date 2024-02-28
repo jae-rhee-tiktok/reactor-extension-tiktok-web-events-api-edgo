@@ -44,7 +44,8 @@ export default () => [
     {
       defaultItems: eventNames.map((q) => ({ id: q, name: q })),
       allowsCustomValue: true,
-      minWidth: 'size-4600'
+      minWidth: 'size-4600',
+      width: 'size-4600'
     }
   ],
   [

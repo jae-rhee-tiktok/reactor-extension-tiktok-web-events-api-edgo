@@ -1,14 +1,15 @@
 {
   "displayName": "TikTok Web Events API Extension",
   "name": "tiktok_events_api_extension",
-  "iconPath": "resources/icons/cloud-connector.svg",
+  "iconPath": "resources/icons/TikTok-Social-Icon-Square-White.svg",
   "version": "1.0.2",
   "description": "Send web events to TikTok Web Events API.",
   "author": {
-    "name": "Adobe Systems",
-    "url": "http://adobe.com",
-    "email": "reactor@adobe.com"
+    "name": "TikTok",
+    "url": "http://www.tiktok.com",
+    "email": "adobeeng@bytedance.com"
   },
+  "exchangeUrl": "https://www.adobeexchange.com/experiencecloud.details.109834.html",
   "platform": "edge",
   "viewBasePath": "dist/",
   "configuration": {

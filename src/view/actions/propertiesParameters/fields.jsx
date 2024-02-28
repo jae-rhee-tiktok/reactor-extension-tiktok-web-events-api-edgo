@@ -84,6 +84,7 @@ export default function PropertiesParametersFields() {
               key={name}
               name={name}
               component={TextField}
+              minWidth="size-4600"
               width="size-4600"
               label={label}
               description={description}

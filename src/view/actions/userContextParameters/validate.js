@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export default (values) => {
+export default () => {
   const errors = {};
 
   // if (!values.phone && !values.email) {
@@ -18,13 +18,13 @@ export default (values) => {
   //     errors.phone = 'Please provide an email or a phone number or both.'
   // }
 
-  if (!values.ip) {
-    errors.ip = 'Please provide a valid IP address.';
-  }
+  // if (!values.ip) {
+  //   errors.ip = 'Please provide a valid IP address.';
+  // }
 
-  if (!values.userAgent) {
-    errors.userAgent = 'Please provide a valid user agent.';
-  }
+  // if (!values.userAgent) {
+  //   errors.userAgent = 'Please provide a valid user agent.';
+  // }
 
   return errors;
 };
