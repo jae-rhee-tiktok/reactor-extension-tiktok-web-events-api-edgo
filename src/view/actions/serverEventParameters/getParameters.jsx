@@ -19,6 +19,38 @@ import eventNames from '../../utils/eventNames';
 
 export default () => [
   [
+    'eventSource',
+    'Event Source',
+    'AThis field is used to specify the type of events you are uploading through Events API.',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>Enum values</p>
+        <p>
+          <ul>
+            <li>
+              <code>web</code>: The events took place on your website and are
+              tracked by a Pixel Code.
+            </li>
+            <li>
+              <code>app</code>: The events took place on your app and are
+              tracked by a TikTok App ID.
+            </li>
+            <li>
+              <code>offline</code> : The conversions took place in a physical
+              store and are tracked by an Offline Event Set ID.
+            </li>
+            <li>
+              <code>crm</code>: The lead events took place in a CRM system and
+              are tracked by a CRM Event Set ID.
+            </li>
+          </ul>
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
     'event',
     'Event Name',
     'Events are defined as actions a website visitor takes ' +
@@ -90,6 +122,39 @@ export default () => [
             Event deduplication
           </a>{' '}
           for details and complete the setup.{' '}
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'ldu',
+    'Limited Data Use',
+    'Flag events for limited data processing.',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          In order to help facilitate advertiser&apos;s compliance with the
+          right to opt-out of sale and sharing of personal data under certain
+          U.S. state privacy laws, TikTok offers a Limited Data Use
+          (&quot;LDU&quot;) feature. LDU for the Pixel and Events API helps give
+          businesses more control over how their event data is used in
+          TikTok&apos;s systems. The feature will be available in California,
+          Virginia, Colorado, Connecticut, and Utah.
+        </p>
+        <p>
+          Businesses should consult with their legal advisors on how to use
+          TikTok&apos;s products in compliance with applicable laws. For details
+          on new state data protection laws, please see our updated{' '}
+          <a
+            href="https://ads.tiktok.com/i18n/official/article?aid=10015015"
+            rel="noreferrer"
+            target="_blank"
+          >
+            jurisdictional terms
+          </a>
+          .
         </p>
       </Content>
     </ContextualHelp>

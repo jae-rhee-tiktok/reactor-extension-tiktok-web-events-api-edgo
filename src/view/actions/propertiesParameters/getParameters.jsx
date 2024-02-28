@@ -17,75 +17,109 @@ import { Content, ContextualHelp, Heading } from '@adobe/react-spectrum';
 
 export default () => [
   [
-    'price',
-    'Price',
-    'The price of the item. Example: 25',
+    'contents',
+    'Contents',
+    'Relevant products in an event with product information.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          <strong>Note:</strong> <strong>Price</strong> is the price for a
-          single item, and <strong>value</strong> is the total price of the
-          order. For example, if you have two items each sold for $10, the{' '}
-          <strong>price</strong> parameter would pass <strong>10</strong> and
-          the value parameter would pass <strong>20</strong>.
+          <table>
+            <tr>
+              <th>Field</th>
+              <th>Data Type</th>
+              <th>Description</th>
+              <th>Required for reporting ROAS or for VBO</th>
+              <th>Required for VSA</th>
+            </tr>
+            <tr>
+              <td>price</td>
+              <td>float</td>
+              <td>
+                The price of the item. <code>price</code> price specifies the
+                price for a single item, and <code>value</code> specifies the
+                total price of the order.
+              </td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>quantity</td>
+              <td>integer</td>
+              <td>The number of items.</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>content_id</td>
+              <td>string</td>
+              <td>
+                Unique ID of the product or content. We recommend using{' '}
+                <code>sku_id</code> or <code>item_group_id</code> if you have
+                one. If you have set up <code>sku_id</code> or{' '}
+                <code>item_group_id</code> in the catalog, the ID should match
+                the <code>sku_id</code> or <code>item_group_id</code>.
+              </td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>content_category</td>
+              <td>string</td>
+              <td>Category of the page or product.</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>brand</td>
+              <td>string</td>
+              <td>Brand name of the product item.</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+          </table>
         </p>
       </Content>
     </ContextualHelp>
   ],
-  ['quantity', 'Quantity', 'Number of item. Example: 4', false],
   [
     'contentType',
     'Content Type',
-    'The property\'s value must be set to either "product" or "product_group", ' +
-      'depending on how you will configure your data feed when you set up your ' +
-      'product catalog.',
+    'The type of content in the event. Enum values: "product", "product_group".',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          If you will be tracking events associated with individual products,
-          set the value to{' '}
-          <strong>
-            <code>product</code>
-          </strong>
-          . If you are tracking events associated with product groups, set it to{' '}
-          <strong>
-            <code>product_group</code>
-          </strong>{' '}
-          instead.
+          <ul>
+            <li>
+              When the <code>content_id</code> in the <code>contents</code>{' '}
+              parameter is specified as <code>sku_id</code>, set this field to{' '}
+              <code>product</code>.
+            </li>
+            <li>
+              When the <code>content_id</code> in the <code>contents</code>{' '}
+              parameter is specified as <code>item_group_id</code>, set this
+              field to <code>product_group</code>.
+            </li>
+          </ul>
         </p>
       </Content>
     </ContextualHelp>
-  ],
-  [
-    'contentId',
-    'Content ID',
-    'ID of the product item. Example: 1077218',
-    false
-  ],
-  [
-    'contentCategory',
-    'Content Category',
-    'Category of the page/product. Example: "apparel"',
-    false
-  ],
-  [
-    'contentName',
-    'Content Name',
-    'Name of the page/product. Example: "shirt"',
-    false
   ],
   [
     'currency',
     'Currency',
-    'ISO 4217 currency code. Example: USD',
+    'ISO 4217 currency code. Example: "USD". Required for reporting ' +
+      'Return on Ad Spend (ROAS) or for Value-based Optimization (VBO).',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
+        <p>
+          <strong>Recommended for revenue related events.</strong>
+        </p>
         <p>
           <strong>List of currencies currently supported:</strong> AED, ARS,
           AUD, BDT, BHD, BIF, BOB, BRL, CAD, CHF, CLP, CNY, COP, CRC, CZK, DKK,
@@ -100,47 +134,48 @@ export default () => [
   [
     'value',
     'Value',
-    'Value of the order or items sold. Example: 100',
+    'Value of the order or items sold. Required for reporting ' +
+      'Return on Ad Spend (ROAS) or for Value-based Optimization (VBO).',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          <strong>Note:</strong> <strong>Price</strong> is the price for a
-          single item, and <strong>value</strong> is the total price of the
-          order. For example, if you have two items each sold for $10, the{' '}
-          <strong>price</strong> parameter would pass <strong>10</strong> and
-          the value parameter would pass <strong>20</strong>.
+          <strong>Recommended for revenue related events.</strong>
+        </p>
+        <p>
+          The value should always be formatted as an integer or decimal (for
+          instance, 10.00) regardless of the location, currency, or other
+          factors. It should not contain any currency symbols, special
+          characters, letters, or commas.
+        </p>
+        <p>
+          <strong>Note</strong>: <code>price</code> specifies the price for a
+          single item, and <code>value</code> specifies the total price of the
+          order. For example, if you have two items each sold for ten dollars,
+          the <code>price</code> parameter would be <code>10.00</code> and the{' '}
+          <code>value</code> parameter would be <code>20.00</code>.
         </p>
       </Content>
     </ContextualHelp>
   ],
-  [
-    'description',
-    'Description',
-    'Description of the item or page. Example: "Lightweight cotton"',
-    false
-  ],
+  ['description', 'Description', 'Description of the item or page.', false],
   [
     'query',
     'Query',
-    'The text string that was searched for. For instance, a person searches for a product on ' +
-      'your website, you can forward the keyword being searched here.',
+    'The text string that was input by a user.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          If a person enters a coupon code at check out, you can forward the
-          code. Example: &quot;SAVE10COUPON&quot;
+          For instance, if a user searches for a product on your website, you
+          can forward the keyword being searched. If a user enters a coupon code
+          at checkout, you can forward the code.
         </p>
       </Content>
     </ContextualHelp>
   ],
-  [
-    'status',
-    'Status',
-    'Status of an order, item, or service. Example: "submitted"',
-    false
-  ]
+  ['orderId', 'Order ID', 'Order ID of the transaction.', false],
+  ['shopId', 'Shop ID', 'Shop ID of the transaction."', false]
 ];

@@ -25,18 +25,44 @@ function checkSha256(str) {
 }
 
 module.exports.formatEmail = async function (email) {
-  return checkSha256(email) ? email : await sha256(email);
+  const result = [];
+  if (Array.isArray(email)) {
+    email.forEach(async (em) => {
+      result.push(checkSha256(em) ? em : await sha256(em));
+    });
+  } else {
+    result.push(checkSha256(email) ? email : await sha256(email));
+  }
+  return result;
 };
 
 module.exports.formatPhone = async function (phone) {
-  if (checkSha256(phone)) {
-    return phone;
+  const result = [];
+  if (Array.isArray(phone)) {
+    phone.forEach(async (ph) => {
+      if (checkSha256(ph)) {
+        result.push(ph);
+      } else {
+        const validatedPhone = ph.match(/[0-9]{0,14}/g);
+        if (validatedPhone === null) {
+          throw new Error(`${ph} is not a valid E.164 phone number.`);
+        }
+        // Remove spaces and non-digits; append + to the beginning
+        const formattedPhone = `+${ph.replace(/[^0-9]/g, '')}`;
+        result.push(await sha256(formattedPhone));
+      }
+    });
+  } else {
+    if (checkSha256(phone)) {
+      result.push(phone);
+    }
+    const validatedPhone = phone.match(/[0-9]{0,14}/g);
+    if (validatedPhone === null) {
+      throw new Error(`${phone} is not a valid E.164 phone number.`);
+    }
+    // Remove spaces and non-digits; append + to the beginning
+    const formattedPhone = `+${phone.replace(/[^0-9]/g, '')}`;
+    result.push(await sha256(phone));
   }
-  const validatedPhone = phone.match(/[0-9]{0,14}/g);
-  if (validatedPhone === null) {
-    throw new Error(`${phone} is not a valid E.164 phone number.`);
-  }
-  // Remove spaces and non-digits; append + to the beginning
-  const formattedPhone = `+${phone.replace(/[^0-9]/g, '')}`;
-  return await sha256(phone);
+  return result;
 };
