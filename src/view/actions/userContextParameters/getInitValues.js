@@ -12,15 +12,15 @@ governing permissions and limitations under the License.
 
 export default ({ settings }) => {
   return {
-    ip: settings?.ip || '',
-    userAgent: settings?.userAgent || '',
-    email: settings?.email || [],
-    phone: settings?.phone || [],
-    ttp: settings?.ttp || '',
-    externalId: settings?.externalId || [],
-    ttclid: settings?.ttclid || '',
-    userLocale: settings?.userLocale || '',
-    pageUrl: settings?.pageUrl || '',
-    pageReferrerUrl: settings?.pageReferrerUrl || ''
+    ip: settings?.ip || undefined,
+    userAgent: settings?.userAgent || undefined,
+    email: settings?.email || undefined,
+    phone: settings?.phone || undefined,
+    ttp: settings?.ttp || undefined,
+    externalId: settings?.externalId || undefined,
+    ttclid: settings?.ttclid || undefined,
+    userLocale: settings?.userLocale || undefined,
+    pageUrl: settings?.pageUrl || undefined,
+    pageReferrerUrl: settings?.pageReferrerUrl || undefined
   };
 };

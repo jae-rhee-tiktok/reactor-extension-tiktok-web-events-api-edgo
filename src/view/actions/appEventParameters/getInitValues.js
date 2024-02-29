@@ -12,16 +12,16 @@ governing permissions and limitations under the License.
 
 export default ({ settings }) => {
   return {
-    appId: settings?.appId || '',
-    appName: settings?.appName || '',
-    appVersion: settings?.appVersion || '',
-    callback: settings?.callback || '',
-    campaignId: settings?.campaignId || '',
-    adId: settings?.adId || [],
-    creativeId: settings?.creativeId || '',
-    isRetargeting: settings?.isRetargeting || false,
-    attributed: settings?.attributed || false,
-    attributionType: settings?.attributionType || '',
-    attributionProvider: settings?.attributionProvider || ''
+    appId: settings?.appId || undefined,
+    appName: settings?.appName || undefined,
+    appVersion: settings?.appVersion || undefined,
+    callback: settings?.callback || undefined,
+    campaignId: settings?.campaignId || undefined,
+    adId: settings?.adId || undefined,
+    creativeId: settings?.creativeId || undefined,
+    isRetargeting: settings?.isRetargeting || undefined,
+    attributed: settings?.attributed || undefined,
+    attributionType: settings?.attributionType || undefined,
+    attributionProvider: settings?.attributionProvider || undefined
   };
 };

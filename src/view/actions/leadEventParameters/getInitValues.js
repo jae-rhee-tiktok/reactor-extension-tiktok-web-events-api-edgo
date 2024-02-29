@@ -12,7 +12,7 @@ governing permissions and limitations under the License.
 
 export default ({ settings }) => {
   return {
-    leadId: settings?.leadId || '',
-    leadEventSource: settings?.leadEventSource || ''
+    leadId: settings?.leadId || undefined,
+    leadEventSource: settings?.leadEventSource || undefined
   };
 };

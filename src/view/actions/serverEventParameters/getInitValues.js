@@ -12,9 +12,9 @@ governing permissions and limitations under the License.
 
 export default ({ settings }) => {
   return {
-    event: settings?.event || '',
-    timestamp: settings?.timestamp || '',
-    eventId: settings?.eventId || '',
+    event: settings?.event || undefined,
+    timestamp: settings?.timestamp || undefined,
+    eventId: settings?.eventId || undefined,
     ldu: settings?.ldu || false
   };
 };

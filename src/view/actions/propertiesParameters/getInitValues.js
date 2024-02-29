@@ -12,19 +12,19 @@ governing permissions and limitations under the License.
 
 export default ({ settings }) => {
   return {
-    contents: settings?.contents || [],
-    contentType: settings?.contentType || '',
-    currency: settings?.currency || '',
-    value: settings?.value || '',
-    description: settings?.description || '',
-    query: settings?.query || '',
-    orderId: settings?.orderId || '',
-    shopId: settings?.shopId || '',
-    price: settings?.price || '',
-    quantity: settings?.quantity || '',
-    contentId: settings?.contentId || '',
-    contentCategory: settings?.contentCategory || '',
-    contentName: settings?.contentName || '',
-    status: settings?.status || ''
+    contents: settings?.contents || undefined,
+    contentType: settings?.contentType || undefined,
+    currency: settings?.currency || undefined,
+    value: settings?.value || undefined,
+    description: settings?.description || undefined,
+    query: settings?.query || undefined,
+    orderId: settings?.orderId || undefined,
+    shopId: settings?.shopId || undefined,
+    price: settings?.price || undefined,
+    quantity: settings?.quantity || undefined,
+    contentId: settings?.contentId || undefined,
+    contentCategory: settings?.contentCategory || undefined,
+    contentName: settings?.contentName || undefined,
+    status: settings?.status || undefined
   };
 };
