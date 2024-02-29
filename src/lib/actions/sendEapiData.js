@@ -70,7 +70,18 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     contentId,
     contentCategory,
     contentName,
-    status
+    status,
+    appId,
+    appName,
+    appVersion,
+    callback,
+    campaignId,
+    adId,
+    creativeId,
+    isRetargeting,
+    attributed,
+    attributionType,
+    attributionProvider
   } = getSettings();
 
   const { eventSourceId, pixelCode, accessToken, eventSource } =
@@ -132,19 +143,21 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
           referrer: pageReferrerUrl ? pageReferrerUrl : undefined
         },
         app: {
-          app_id: appId,
-          app_name: appName,
-          app_version: appVersion
+          app_id: appId ? appId : undefined,
+          app_name: appName ? appName : undefined,
+          app_version: appVersion ? appVersion : undefined
         },
         ad: {
-          callback: callback,
-          campaign_id: campaignId,
-          ad_id: adId,
-          creative_id: creativeId,
-          is_retargeting: isRetargeting,
-          attributed: attributed,
-          attribution_type: attributionType,
+          callback: callback ? callback : undefined,
+          campaign_id: campaignId ? campaignId : undefined,
+          ad_id: adId ? adId : undefined,
+          creative_id: creativeId ? creativeId : undefined,
+          is_retargeting: isRetargeting ? isRetargeting : undefined,
+          attributed: attributed ? attributed : undefined,
+          attribution_type: attributionType ? attributionType : undefined,
           attribution_provider: attributionProvider
+            ? attributionProvider
+            : undefined
         },
         lead: {
           lead_id: leadId ? leadId : undefined,
