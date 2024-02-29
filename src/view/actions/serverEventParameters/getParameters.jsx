@@ -13,7 +13,7 @@ governing permissions and limitations under the License.
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react';
-import { Content, ContextualHelp, Heading } from '@adobe/react-spectrum';
+import { Content, ContextualHelp, Heading, Link } from '@adobe/react-spectrum';
 import WrappedComboBoxField from '../../components/wrappedComboBox';
 import eventNames from '../../utils/eventNames';
 
@@ -21,22 +21,45 @@ export default () => [
   [
     'event',
     'Event Name',
-    'Events are defined as actions a website visitor takes ' +
-      'Conversion event name. ',
+    '[For web, app, offline, and CRM events] Conversion event name.',
     true,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          For accepted event names, please refer to the{' '}
-          <a
-            href="https://ads.tiktok.com/marketing_api/docs?id=1741601162187777"
-            rel="noreferrer"
-            target="_blank"
-          >
-            documentation
-          </a>
+          <strong>For web, app, offline, and CRM events.</strong>
+        </p>
+        <p>
+          <ul>
+            <li>
+              For web and app events, it can be either a Standard Event or
+              Custom Event.
+            </li>
+            <li>For offline events, it can only be a Standard Event.</li>
+            <li>For CRM events, it can only be a Custom Event.</li>
+          </ul>
+        </p>
+        <p>
+          To find out the supported values for Standard Events, refer to{' '}
+          <Link>
+            <a
+              href="https://ads.tiktok.com/marketing_api/docs?id=1771101186666498"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Events API 2.0-Supported events
+            </a>
+          </Link>
           .
+        </p>
+        <p>
+          To report a Custom Web Event or Custom App Event, pass a customized
+          name in this field.
+        </p>
+        <p>
+          Do not use sensitive words in the name of Custom Events. Otherwise,
+          the responsibility for any consequences that may arise will be borne
+          by you.
         </p>
       </Content>
     </ContextualHelp>,
@@ -51,17 +74,14 @@ export default () => [
   [
     'timestamp',
     'Event Time',
-    'ISO 8601 format timestamp that the event took place.',
+    '[For web, app, offline, and CRM events] ISO 8601 format OR Unix timestamp that the event ' +
+      'took place.',
     true,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          Timestamp with ISO 8601 format. For example,
-          <strong>
-            <code>2022-11-23T03:30:52Z</code>
-          </strong>
-          .
+          <strong>For web, app, offline, and CRM events.</strong>
         </p>
         <p>
           Note that if timestamp is not provided, the time when TikTok receives
@@ -73,23 +93,48 @@ export default () => [
   [
     'eventId',
     'Event ID',
-    'Any string or hashed ID that can identify a unique event. ' +
-      'This is required if you are sending overlapping events ' +
-      'from both TikTok Pixel and Events API.',
+    '[For web, offline, and CRM events] The ID that is used to identify a unique event. ' +
+      'It can be hashed or unhashed.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          Please check{' '}
-          <a
-            href="https://ads.tiktok.com/marketing_api/docs?id=1739584864945154"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Event deduplication
-          </a>{' '}
-          for details and complete the setup.{' '}
+          <strong>For web, offline, and CRM events.</strong>
+        </p>
+        <p>Required in any of the following scenarios:</p>
+        <p>
+          <ul>
+            <li>
+              You are sending web events (<code>event_source</code> ={' '}
+              <code>web</code>) from both TikTok browser pixel and Events API.
+            </li>
+            <li>
+              You are sending CRM events (<code>event_source</code> ={' '}
+              <code>crm</code>) from both Events API and by uploading CSV files
+              on Events Manager.
+            </li>
+          </ul>
+        </p>
+        <p>
+          TikTok uses the <code>event_source_id</code>, <code>event_id</code>{' '}
+          and <code>event</code> to deduplicate the same event sent multiple
+          times from a single channel or across multiple channels (for instance
+          browser pixel and Events API).
+        </p>
+        <p>
+          For more information on event deduplication and how to complete the
+          setup, refer to{' '}
+          <Link>
+            <a
+              href="https://ads.tiktok.com/marketing_api/docs?id=1771100965992450"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Events API 2.0 - Event Deduplication
+            </a>
+          </Link>
+          .
         </p>
       </Content>
     </ContextualHelp>
@@ -97,11 +142,14 @@ export default () => [
   [
     'ldu',
     'Limited Data Use',
-    'Flag events for limited data processing.',
+    '[For web and app events] Flag events for limited data processing.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
+        <p>
+          <strong>For web and app events.</strong>
+        </p>
         <p>
           In order to help facilitate advertiser&apos;s compliance with the
           right to opt-out of sale and sharing of personal data under certain
@@ -115,13 +163,15 @@ export default () => [
           Businesses should consult with their legal advisors on how to use
           TikTok&apos;s products in compliance with applicable laws. For details
           on new state data protection laws, please see our updated{' '}
-          <a
-            href="https://ads.tiktok.com/i18n/official/article?aid=10015015"
-            rel="noreferrer"
-            target="_blank"
-          >
-            jurisdictional terms
-          </a>
+          <Link>
+            <a
+              href="https://ads.tiktok.com/i18n/official/article?aid=10015015"
+              rel="noreferrer"
+              target="_blank"
+            >
+              jurisdictional terms
+            </a>
+          </Link>
           .
         </p>
       </Content>

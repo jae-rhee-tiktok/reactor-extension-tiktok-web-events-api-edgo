@@ -19,7 +19,8 @@ export default () => [
   [
     'contents',
     'Contents',
-    'Relevant products in an event with product information.',
+    '[Required for Video Shopping Ads (VSA)] Relevant products in an event with ' +
+      'product information.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
@@ -55,11 +56,12 @@ export default () => [
               <td>content_id</td>
               <td>string</td>
               <td>
-                Unique ID of the product or content. We recommend using{' '}
-                <code>sku_id</code> or <code>item_group_id</code> if you have
-                one. If you have set up <code>sku_id</code> or{' '}
-                <code>item_group_id</code> in the catalog, the ID should match
-                the <code>sku_id</code> or <code>item_group_id</code>.
+                &#91;Required for VSA&#93; Unique ID of the product or content.{' '}
+                We recommend using <code>sku_id</code> or{' '}
+                <code>item_group_id</code> if you have one. If you have set up{' '}
+                <code>sku_id</code> or <code>item_group_id</code> in the
+                catalog, the ID should match the <code>sku_id</code> or{' '}
+                <code>item_group_id</code>.
               </td>
               <td>No</td>
               <td>Yes</td>
@@ -86,7 +88,8 @@ export default () => [
   [
     'contentType',
     'Content Type',
-    'The type of content in the event. Enum values: "product", "product_group".',
+    '[Required for Video Shopping Ads (VSA)] The type of content in the event. ' +
+      'Enum values: "product", "product_group".',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
@@ -111,8 +114,8 @@ export default () => [
   [
     'currency',
     'Currency',
-    'ISO 4217 currency code. Example: "USD". Required for reporting ' +
-      'Return on Ad Spend (ROAS) or for Value-based Optimization (VBO).',
+    '[Required for reporting Return on Ad Spend (ROAS) or for Value-based ' +
+      'Optimization (VBO)]ISO 4217 currency code.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
@@ -134,8 +137,8 @@ export default () => [
   [
     'value',
     'Value',
-    'Value of the order or items sold. Required for reporting ' +
-      'Return on Ad Spend (ROAS) or for Value-based Optimization (VBO).',
+    '[Required for reporting Return on Ad Spend (ROAS) or for Value-based ' +
+      'Optimization (VBO)]Value of the order or items sold.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
@@ -177,5 +180,95 @@ export default () => [
     </ContextualHelp>
   ],
   ['orderId', 'Order ID', 'Order ID of the transaction.', false],
-  ['shopId', 'Shop ID', 'Shop ID of the transaction."', false]
+  ['shopId', 'Shop ID', 'Shop ID of the transaction."', false],
+  [
+    'price',
+    '[Deprecated] Price',
+    'The price of the item. Example: 25',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          Please use <code>contents</code> array mapping to send product
+          information.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'quantity',
+    '[Deprecated] Quantity',
+    'Number of item. Example: 4',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          Please use <code>contents</code> array mapping to send product
+          information.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'contentId',
+    '[Deprecated] Content ID',
+    'ID of the product item. Example: 1077218',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          Please use <code>contents</code> array mapping to send product
+          information.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'contentCategory',
+    '[Deprecated] Content Category',
+    'Category of the page/product. Example: "apparel"',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          Please use <code>contents</code> array mapping to send product
+          information.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'contentName',
+    '[Deprecated] Content Name',
+    'Name of the page/product. Example: "shirt"',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          Please use <code>contents</code> array mapping to send product
+          information.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'status',
+    '[Deprecated] Status',
+    'Status of an order, item, or service. Example: "submitted"',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          Please use <code>contents</code> array mapping to send product
+          information.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ]
 ];

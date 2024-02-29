@@ -13,16 +13,16 @@ governing permissions and limitations under the License.
 export default (values) => {
   const errors = {};
 
-  if (!values.pixelCode) {
-    errors.pixelCode = 'Please specify your TikTok Pixel Code.';
+  if (!values.pixelCode || !values.eventSourceId) {
+    errors.eventSourceId = 'Please specify your TikTok Event Source ID.';
   }
 
   if (!values.accessToken) {
-    errors.accessToken = 'Please specify your access token.';
+    errors.accessToken = 'Please specify your Access Token.';
   }
 
   if (!values.eventSource) {
-    errors.eventSource = 'Please specify your event source.';
+    errors.eventSource = 'Please specify your Event Source.';
   }
 
   return errors;

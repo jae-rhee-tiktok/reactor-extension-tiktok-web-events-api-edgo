@@ -22,15 +22,16 @@ import {
   Heading
 } from '@adobe/react-spectrum';
 import WrappedTextField from '../../components/wrappedTextField';
+import WrappedComboBoxField from '../../components/wrappedComboBox';
 
 export default function ConfigurationFields() {
   return (
     <Flex direction="column" gap="size-65">
       <WrappedTextField
-        name="pixelCode"
+        name="eventSourceId"
         component={TextField}
         width="size-4600"
-        label="Pixel Code"
+        label="Event Source ID"
         isRequired
         necessityIndicator="label"
         supportDataElement
@@ -38,31 +39,92 @@ export default function ConfigurationFields() {
           <ContextualHelp>
             <Heading>Tip</Heading>
             <Content>
+              <p>An Event Source ID that is used to track events.</p>
               <p>
-                If you already have a TikTok pixel integrated for the website,
-                you could use the existing pixel code. You could find the
-                pixel_code by logging in your TikTok Ads Manager account and
-                navigate to Assets-&gt;Event-&gt;Web Events.
+                <ul>
+                  <li>
+                    <p>
+                      When <code>event_source</code> is set to <code>web</code>,
+                      specify a Pixel Code through this field.
+                    </p>
+                    <p>
+                      To obtain a Pixel Code, refer to{' '}
+                      <Link>
+                        <a
+                          href="https://ads.tiktok.com/marketing_api/docs?id=1771101001228290#item-link-Q2%3A%20Where%20can%20I%20find%20the%20pixel_code%3F"
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          FAQs - Where can I find the pixel_code?
+                        </a>
+                      </Link>
+                      .
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      When <code>event_source</code> is set to{' '}
+                      <code>offline</code>, specify an Offline Event Set ID
+                      through this field.
+                    </p>
+                    <p>
+                      To obtain an Offline Event Set ID, refer to
+                      <Link>
+                        <a
+                          href="https://ads.tiktok.com/marketing_api/docs?id=1771101027431425"
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Setup Guide for Offline
+                        </a>
+                      </Link>
+                      .
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      When <code>event_source</code> is set to <code>app</code>,
+                      specify a TikTok App ID through this field.
+                    </p>
+                    <p>
+                      To obtain a TikTok App ID, refer to
+                      <Link>
+                        <a
+                          href="https://ads.tiktok.com/marketing_api/docs?id=1771101111730178"
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Setup Guide for App
+                        </a>
+                      </Link>
+                      .
+                    </p>
+                  </li>
+                  <li>
+                    <code>crm</code>: The lead events took place in a CRM system
+                    and and and and are tracked by a CRM Event Set ID.
+                  </li>
+                </ul>
               </p>
+            </Content>
+          </ContextualHelp>
+        }
+      />
+
+      <WrappedTextField
+        name="pixelCode"
+        component={TextField}
+        width="size-4600"
+        label="[Deprecated]Pixel Code"
+        isRequired={false}
+        necessityIndicator="label"
+        supportDataElement
+        contextualHelp={
+          <ContextualHelp>
+            <Heading>Tip</Heading>
+            <Content>
               <p>
-                This means the events forwarded to us will show up under that
-                pixel. Please be aware that if you are sending overlapping
-                events from both Pixel SDK and Events API, you must set up{' '}
-                <a
-                  href="https://ads.tiktok.com/marketing_api/docs?rid=p41a33fdhon&id=1739584864945154"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Event deduplication
-                </a>
-                .
-              </p>
-              <p>
-                If you don&apos;t want to use the existing pixel and want to
-                create pixel from scratch, go to{' '}
-                <strong>Assets-&gt;Events-&gt;Web Events</strong>. Click on{' '}
-                <strong>Set Up Web Events</strong> and select{' '}
-                <strong>Events API</strong>.
+                Please use the <code>eventSourceId</code> configuration.
               </p>
             </Content>
           </ContextualHelp>
@@ -100,7 +162,7 @@ export default function ConfigurationFields() {
         }
       />
 
-      <WrappedTextField
+      <WrappedComboBoxField
         name="eventSource"
         component={TextField}
         width="size-4600"
@@ -116,7 +178,7 @@ export default function ConfigurationFields() {
                 This field is used to specify the type of events you are
                 uploading through Events API.
               </p>
-              <p>Enum values</p>
+              <p>Enum values:</p>
               <p>
                 <ul>
                   <li>
@@ -140,6 +202,10 @@ export default function ConfigurationFields() {
             </Content>
           </ContextualHelp>
         }
+        defaultItems={['web', 'offline', 'app', 'crm'].map((q) => ({
+          id: q,
+          name: q
+        }))}
       />
     </Flex>
   );

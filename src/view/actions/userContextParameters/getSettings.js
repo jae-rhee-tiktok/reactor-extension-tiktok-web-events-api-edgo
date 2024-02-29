@@ -20,8 +20,6 @@ export default (values) => {
     'phone',
     'ttp',
     'externalId',
-    'leadId',
-    'leadEventSource',
     'ttclid',
     'userLocale',
     'pageUrl',

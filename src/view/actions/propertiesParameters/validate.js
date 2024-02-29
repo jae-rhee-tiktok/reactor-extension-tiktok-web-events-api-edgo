@@ -10,15 +10,36 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
+const contentInfoRequiredEvents = [
+  'AddToCart',
+  'CompletePayment',
+  'PlaceAnOrder',
+  'ViewContent'
+];
+
 export default (values) => {
   const errors = {};
 
-  if (values?.event && values.event === 'CompletePayment') {
+  if (values?.event && contentInfoRequiredEvents.includes(values.event)) {
+    if (!values.contents) {
+      errors.contents =
+        'Please provide the contents list for these following events: "AddToCart", ' +
+        '"CompletePayment", "PlaceAnOrder", and "ViewContent".';
+    }
+    if (!values.contentType) {
+      errors.contentType =
+        'Please provide the content type for these following events: "AddToCart", ' +
+        '"CompletePayment", "PlaceAnOrder", and "ViewContent".';
+    }
     if (!values.currency) {
-      errors.currency = 'Please provide the currency.';
+      errors.currency =
+        'Please provide the currency for these following events: "AddToCart", ' +
+        '"CompletePayment", "PlaceAnOrder", and "ViewContent".';
     }
     if (!values.value) {
-      errors.value = 'Please provide the value';
+      errors.value =
+        'Please provide the value for these following events: "AddToCart", ' +
+        '"CompletePayment", "PlaceAnOrder", and "ViewContent".';
     }
   }
   return errors;

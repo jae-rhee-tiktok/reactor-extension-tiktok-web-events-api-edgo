@@ -64,24 +64,46 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     query,
     orderId,
     shopId,
-    ldu
+    ldu,
+    price,
+    quantity,
+    contentId,
+    contentCategory,
+    contentName,
+    status
   } = getSettings();
 
-  const { pixelCode, accessToken, eventSource } = getExtensionSettings();
+  const { eventSourceId, pixelCode, accessToken, eventSource } =
+    getExtensionSettings();
 
   const requestHeaders = {
     'Content-Type': 'application/json',
     'Access-Token': accessToken
   };
 
+  const updatedEventSourceId = eventSourceId ? eventSourceId : pixelCode;
+
+  const inputContents = contents && Array.isArray(contents) ? contents : [];
+
+  if (contentId) {
+    const singleContent = {
+      price: price ? price : undefined,
+      quantity: quantity ? quantity : undefined,
+      content_id: contentId ? contentId : undefined,
+      content_category: contentCategory ? contentCategory : undefined,
+      content_name: contentName ? contentName : undefined
+    };
+    inputContents.push(singleContent);
+  }
+
   const requestBody = {
     event_source: eventSource ? eventSource : 'web',
-    event_source_id: pixelCode,
+    event_source_id: updatedEventSourceId,
     partner_name: partner_name,
     data: [
       {
         event: event,
-        event_time: timestamp
+        event_time: timestamp // TODO: check for unix format
           ? Math.floor(new Date(timestamp).getTime() / 1000)
           : Math.floor(new Date().getTime() / 1000),
         event_id: eventId,
@@ -96,7 +118,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
           locale: userLocale ? userLocale : undefined
         },
         properties: {
-          contents: buildContentsArray(contents),
+          contents: buildContentsArray(inputContents),
           content_type: contentType ? contentType : 'product',
           currency: currency ? currency : 'USD',
           value: value ? value : undefined,

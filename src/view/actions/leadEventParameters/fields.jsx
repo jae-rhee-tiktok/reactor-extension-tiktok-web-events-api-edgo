@@ -18,8 +18,6 @@ import {
   Content,
   Flex,
   Heading,
-  Link,
-  Text,
   TextField,
   ContextualHelp,
   View
@@ -28,66 +26,34 @@ import WrappedTextField from '../../components/wrappedTextField';
 
 import Parameters from './getParameters';
 
-export default function ServerEventParametersFields() {
+export default function LeadEventParametersFields() {
   const { watch } = useFormContext();
   const [event] = watch(['event']);
 
-  const serverParameters = Parameters({ event });
+  const leadEventParams = Parameters({ event });
 
   return (
     <View>
-      <Content>
-        <Text>
-          Use the data mapping below to configure a TikTok Events API 2.0 event
-          using your data from Adobe Edge. For more information about these
-          parameters, go to{' '}
-        </Text>
-        <Link>
-          <a
-            href="https://business-api.tiktok.com/portal/docs?id=1771100779668482"
-            target="_blank"
-            rel="noreferrer"
-          >
-            TikTok For Business Developers.
-          </a>
-        </Link>
-      </Content>
       <Flex alignItems="center" gap="size-75">
-        <Heading level="3">Events and Parameters</Heading>
+        <Heading level="3">Lead EVent Parameters</Heading>
 
         <ContextualHelp>
           <Heading>Tip</Heading>
           <Content>
-            Send actions that occur as TikTok Supported Events. For more
-            details, refer{' '}
-            <Link>
-              <a
-                href="https://business-api.tiktok.com/portal/docs?id=1771101186666498"
-                rel="noreferrer"
-                target="_blank"
-              >
-                here
-              </a>
-            </Link>{' '}
-            for documentation.
+            <p>
+              Use the <code>lead</code> parameters to share information about
+              the leads in a CRM system with Events API 2.0. The{' '}
+              <code>lead</code> parameters should only be used when reporting
+              CRM Events (<code>event_source</code> = <code>crm</code>).
+            </p>
           </Content>
         </ContextualHelp>
       </Flex>
 
-      {serverParameters.map(
-        ([
-          name,
-          label,
-          description,
-          isRequired,
-          contextualHelp,
-          WrappedComponent = WrappedTextField,
-          rest = {
-            component: TextField
-          }
-        ]) => {
+      {leadEventParams.map(
+        ([name, label, description, isRequired, contextualHelp]) => {
           return (
-            <WrappedComponent
+            <WrappedTextField
               key={name}
               name={name}
               component={TextField}
@@ -99,8 +65,6 @@ export default function ServerEventParametersFields() {
               necessityIndicator={isRequired && 'label'}
               contextualHelp={contextualHelp}
               supportDataElement
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...rest}
             />
           );
         }

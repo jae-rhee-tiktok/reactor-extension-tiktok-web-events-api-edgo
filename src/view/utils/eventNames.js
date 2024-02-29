@@ -24,5 +24,6 @@ export default [
   'Download',
   'SubmitForm',
   'CompleteRegistration',
-  'Subscribe'
+  'Subscribe',
+  'PageView'
 ];

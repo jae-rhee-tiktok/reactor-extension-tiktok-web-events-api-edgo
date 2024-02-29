@@ -29,29 +29,47 @@ import getPropertiesParametersInitValues from './propertiesParameters/getInitVal
 import getPropertiesParametersSettings from './propertiesParameters/getSettings';
 import validatePropertiesParametersFields from './propertiesParameters/validate';
 
+import LeadEventParametersFields from './leadEventParameters/fields';
+import getLeadEventParametersInitValues from './leadEventParameters/getInitValues';
+import getLeadEventParametersSettings from './leadEventParameters/getSettings';
+import validateLeadEventParametersFields from './leadEventParameters/validate';
+
+import AppEventParametersFields from './appEventParameters/fields';
+import getAppEventParametersInitValues from './appEventParameters/getInitValues';
+import getAppEventParametersSettings from './appEventParameters/getSettings';
+import validateAppEventParametersFields from './appEventParameters/validate';
+
 export default function SendEapiData() {
   return (
     <ExtensionView
       getInitialValues={({ initInfo }) => ({
         ...getServerEventParametersInitValues(initInfo),
         ...getUserContextParametersInitValues(initInfo),
-        ...getPropertiesParametersInitValues(initInfo)
+        ...getPropertiesParametersInitValues(initInfo),
+        ...getAppEventParametersInitValues(initInfo),
+        ...getLeadEventParametersInitValues(initInfo)
       })}
       getSettings={({ values }) => ({
         ...getServerEventParametersSettings(values),
         ...getUserContextParametersSettings(values),
-        ...getPropertiesParametersSettings(values)
+        ...getPropertiesParametersSettings(values),
+        ...getAppEventParametersSettings(values),
+        ...getLeadEventParametersSettings(values)
       })}
       validate={(values) => ({
         ...validateServerEventParametersFields(values),
         ...validateUserContextParametersFields(values),
-        ...validatePropertiesParametersFields(values)
+        ...validatePropertiesParametersFields(values),
+        ...validateAppEventParametersFields(values),
+        ...validateLeadEventParametersFields(values)
       })}
       render={() => (
         <>
           <ServerEventParametersFields />
           <UserContextParametersFields />
           <PropertiesParametersFields />
+          <AppEventParametersFields />
+          <LeadEventParametersFields />
         </>
       )}
     />

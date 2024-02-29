@@ -10,9 +10,26 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export default ({ eventSourceId, pixelCode, accessToken, eventSource }) => ({
-  pixelCode,
-  accessToken,
-  eventSource,
-  eventSourceId
-});
+export default (values) => {
+  const result = {};
+
+  [
+    'appId',
+    'appName',
+    'appVersion',
+    'callback',
+    'campaignId',
+    'adId',
+    'creativeId',
+    'isRetargeting',
+    'attributed',
+    'attributionType',
+    'attributionProvider'
+  ].forEach((v) => {
+    if (values[v]) {
+      result[v] = values[v];
+    }
+  });
+
+  return result;
+};

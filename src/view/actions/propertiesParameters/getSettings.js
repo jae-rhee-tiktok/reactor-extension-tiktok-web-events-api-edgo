@@ -14,16 +14,19 @@ export default (values) => {
   const result = {};
 
   [
-    'price',
-    'quantity',
+    'contents',
     'contentType',
-    'contentId',
-    'contentCategory',
-    'contentName',
     'currency',
     'value',
     'description',
     'query',
+    'orderId',
+    'shopId',
+    'price',
+    'quantity',
+    'contentId',
+    'contentCategory',
+    'contentName',
     'status'
   ].forEach((v) => {
     if (values[v]) {

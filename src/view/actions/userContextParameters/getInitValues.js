@@ -18,8 +18,6 @@ export default ({ settings }) => {
     phone: settings?.phone || [],
     ttp: settings?.ttp || '',
     externalId: settings?.externalId || [],
-    leadId: settings?.leadId || '',
-    leadEventSource: settings?.leadEventSource || '',
     ttclid: settings?.ttclid || '',
     userLocale: settings?.userLocale || '',
     pageUrl: settings?.pageUrl || '',
