@@ -42,35 +42,31 @@ export default function UserContextParametersFields() {
           <Heading>Tip</Heading>
           <Content>
             <p>
-              Events API for Web uses customer information like TikTok Click
-              IDs, Advanced Matching and additional signals like IP address and
-              User Agent to match web visitor events with TikTok users. Once
+              Events API 2.0 uses customer information, such as TikTok Click
+              IDs, Advanced Matching, and additional signals like IP address and
+              User Agent, to match web visitor events with TikTok users. Once
               matched, information shared via the Events API can be used to
-              build targeting audiences, inform the optimization algorithm and
+              build targeting audiences, inform the optimization algorithm, and
               better measure campaign results.
             </p>
             <p>
-              It is highly recommended that you include multiple types of
-              matching data to increase the accuracy of targeting and
-              optimization models. You can use Advanced Matching, TikTok Click
-              IDs &#40;
-              <strong>
-                <code>ttcid</code>
-              </strong>
-              &#41; and Cookies to attribute conversions.
+              To increase the accuracy of targeting and optimization models, it
+              is highly recommended to include multiple types of matching data.
+              You can use Advanced Matching, TikTok Click IDs (
+              <code>ttclid</code>), and Cookies to attribute conversions.
             </p>
             <p>
-              For more details, see the{' '}
+              For more details, refer{' '}
               <Link>
                 <a
-                  href="https://ads.tiktok.com/marketing_api/docs?id=1741601162187777"
+                  href="https://business-api.tiktok.com/portal/docs?id=1771101151059969"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  documentation
+                  here
                 </a>
               </Link>
-              .
+              for more information.
             </p>
           </Content>
         </ContextualHelp>

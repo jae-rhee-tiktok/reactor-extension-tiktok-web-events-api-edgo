@@ -27,9 +27,9 @@ function checkSha256(str) {
 module.exports.formatEmail = async function (email) {
   const result = [];
   if (Array.isArray(email)) {
-    email.forEach(async (em) => {
-      result.push(checkSha256(em) ? em : await sha256(em));
-    });
+    for (let i = 0; i < email.length; i++) {
+      result.push(checkSha256(email[i]) ? em : await sha256(email[i]));
+    }
   } else {
     result.push(checkSha256(email) ? email : await sha256(email));
   }
@@ -39,7 +39,8 @@ module.exports.formatEmail = async function (email) {
 module.exports.formatPhone = async function (phone) {
   const result = [];
   if (Array.isArray(phone)) {
-    phone.forEach(async (ph) => {
+    for (let i = 0; i < phone.length; i++) {
+      const ph = phone[i];
       if (checkSha256(ph)) {
         result.push(ph);
       } else {
@@ -51,7 +52,7 @@ module.exports.formatPhone = async function (phone) {
         const formattedPhone = `+${ph.replace(/[^0-9]/g, '')}`;
         result.push(await sha256(formattedPhone));
       }
-    });
+    }
   } else {
     if (checkSha256(phone)) {
       result.push(phone);
@@ -62,7 +63,7 @@ module.exports.formatPhone = async function (phone) {
     }
     // Remove spaces and non-digits; append + to the beginning
     const formattedPhone = `+${phone.replace(/[^0-9]/g, '')}`;
-    result.push(await sha256(phone));
+    result.push(await sha256(formattedPhone));
   }
   return result;
 };

@@ -19,22 +19,22 @@ export default () => [
   [
     'ip',
     'IP Address',
-    'Non-hashed public IP address of the browser.',
+    "[For web and app events only] Non-hashed public IP address of the user's device.",
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
+          <strong>For web and app events only.</strong>
+        </p>
+        <p>
           To increase the probability of matching website visitor events with
-          TikTok ads, we recommend sending both{' '}
-          <strong>
-            <code>ip</code>
-          </strong>{' '}
-          and{' '}
-          <strong>
-            <code>user_agent</code>
-          </strong>
-          .
+          TikTok ads, we recommend sending both <code>ip</code> and{' '}
+          <code>user_agent</code>.
+        </p>
+        <p>
+          Both IPv4 and IPv6 addresses are supported. For IPv6 addresses, both
+          full and compressed formats are acceptable.
         </p>
       </Content>
     </ContextualHelp>
@@ -42,22 +42,18 @@ export default () => [
   [
     'userAgent',
     'User Agent',
-    "Non-hashed user agent from the user's device.",
+    "[For web and app events only] Non-hashed user agent from the user's device.",
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
+          <strong>For web and app events only.</strong>
+        </p>
+        <p>
           To increase the probability of matching website visitor events with
-          TikTok ads, we recommend sending both{' '}
-          <strong>
-            <code>ip</code>
-          </strong>{' '}
-          and{' '}
-          <strong>
-            <code>user_agent</code>
-          </strong>
-          .
+          TikTok ads, we recommend sending both <code>ip</code> and{' '}
+          <code>user_agent</code>.
         </p>
       </Content>
     </ContextualHelp>
@@ -65,27 +61,81 @@ export default () => [
   [
     'email',
     'Email',
-    'The email of the customer if available. ' +
-      'It must be hashed with SHA-256 on the client side.',
+    '[For web, app, offline, and CRM events] The email address, ' +
+      'or email addresses of the customer.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
-        <p>You should lowercase all characters before hashing.</p>
         <p>
-          Do not perform any other types of normalization on emails prior to
-          hashing.
+          <strong>For web, app, offline, and CRM events.</strong>
         </p>
         <p>
-          Only SHA-256 is accepted. Here is the recommended package:{' '}
+          <strong>SHA-256 hashing is required.</strong>
+        </p>
+        <p>TikTok extension will automatically hash any non-hashed values.</p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'phone',
+    'Phone',
+    '[For web, app, offline, and CRM events] The phone number or phone numbers of the customer.',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          <strong>For web, app, offline, and CRM events.</strong>
+        </p>
+        <p>
+          <strong>SHA-256 hashing is required.</strong>
+        </p>
+        <p>TikTok extension will automatically hash any non-hashed values.</p>
+        <p>
+          <strong>Normalize</strong> the phone number to{' '}
           <Link>
             <a
               href="https://ads.tiktok.com/marketing_api/docs?id=1739584860883969"
               rel="noreferrer"
               target="_blank"
             >
-              GitHub - emn178/js-sha256: A simple SHA-256 / SHA-224 hash
-              function for JavaScript supports UTF-8 encoding
+              E.164 format
+            </a>
+          </Link>{' '}
+          (for example, &quot;+12133734253&quot;). We recommend using
+          https://github.com/catamphetamine/libphonenumber-js for E.164 parsing.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'ttp',
+    'Cookie ID',
+    '[For web events only] TikTok Click ID.',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          <strong>For web events only.</strong>
+        </p>
+        <p>
+          If you also use Pixel SDK and have enabled cookies, Pixel SDK
+          automatically saves a unique identifier in the <code>_ttp</code>{' '}
+          cookie. The value of <code>_ttp</code> is used to match website
+          visitor events with TikTok ads. You can extract the value of{' '}
+          <code>_ttp</code> and attach the value here.
+        </p>
+        <p>
+          To learn more about the <code>ttp</code> parameter, refer to{' '}
+          <Link>
+            <a
+              href="https://ads.tiktok.com/marketing_api/docs?id=%201771100936446977"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Events API 2.0 - Send TikTok Cookie (<code>_ttp</code>)
             </a>
           </Link>
           .
@@ -94,89 +144,48 @@ export default () => [
     </ContextualHelp>
   ],
   [
-    'phone',
-    'Phone',
-    'The phone number of the customer if available. ' +
-      'It must be hashed with SHA-256 on the client side.',
+    'externalId',
+    'External ID',
+    '[For web and CRM events only] External ID, a unique identifier ' +
+      "on the advertiser's side, such as loyalty membership IDs, user IDs, and external cookie IDs",
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          Normalize your phone numbers to E.164 format, a combination of +
-          &#91;country code&#93;&#91;phone number&#93;. An example of a US
-          number in the E.164 format:{' '}
-          <strong>
-            <code>+12133734253</code>
-          </strong>
+          <strong>For web and CRM events only.</strong>
+        </p>
+        <p>
+          To learn more about the <code>external_id</code> parameter, refer to{' '}
+          <Link>
+            <a
+              href="https://ads.tiktok.com/marketing_api/docs?id=1771100952291330"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Events API 2.0 - Set up External ID
+            </a>
+          </Link>
           .
         </p>
       </Content>
     </ContextualHelp>
   ],
   [
-    'ttp',
-    'Cookie ID',
-    'If you also use Pixel SDK and enabled cookie, ' +
-      'Pixel SDK automatically saves a unique identifier ' +
-      'in the _ttp cookie. The value of _ttp is used to ' +
-      'match website visitor events with TikTok ads. You ' +
-      'can extract the value of _ttp and attach the value here.',
-    false,
-    <ContextualHelp>
-      <Heading>Tip</Heading>
-      <Content>
-        <p>You should lowercase all characters before hashing.</p>
-        <p>
-          Do not perform any other types of normalization on emails prior to
-          hashing.
-        </p>
-        <p>
-          For details, see{' '}
-          <Link>
-            <a
-              href="https://ads.tiktok.com/marketing_api/docs?id=1739584860883969"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Set up TikTok Click ID and Cookies
-            </a>
-          </Link>{' '}
-          section.
-        </p>
-      </Content>
-    </ContextualHelp>
-  ],
-  [
-    'externalId',
-    'External ID',
-    "Any unique identifier on the advertiser's side, " +
-      'such as loyalty membership IDs, user IDs, and ' +
-      'external cookie IDs. It must be hashed with ' +
-      'SHA-256 on the client side.',
-    false,
-    <ContextualHelp>
-      <Heading>Tip</Heading>
-      <Content>
-        <p>Leading/Trailing spaces need to be trimmed before hashing.</p>
-      </Content>
-    </ContextualHelp>
-  ],
-  [
     'ttclid',
     'TikTok Click ID',
-    'TikTok Click ID (ttclid) is a tracking parameter appended to a ' +
-      'landing page URL whenever a user clicks on an ad on TikTok.',
+    '[For web events only] TikTok Click ID, a tracking parameter ' +
+      'appended to a landing page URL whenever a user clicks on an ad on TikTok.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
         <p>
-          The{' '}
-          <strong>
-            <code>ttcid</code>
-          </strong>{' '}
-          valid period is the same as your CTA window setting in{' '}
+          <strong>For web events only.</strong>
+        </p>
+        <p>
+          The <code>ttcid</code> valid period is the same as your CTA window
+          setting in{' '}
           <Link>
             <a
               href="https://ads.tiktok.com/help/article/attribution-manager?redirected=1"
@@ -189,17 +198,17 @@ export default () => [
           .
         </p>
         <p>
-          For details, see{' '}
+          For more information on sending TikTok Click IDs, refer to{' '}
           <Link>
             <a
-              href="https://ads.tiktok.com/marketing_api/docs?id=1739584860883969"
+              href="https://ads.tiktok.com/marketing_api/docs?id=1771100879787009"
               rel="noreferrer"
               target="_blank"
             >
-              Set up TikTok Click ID and Cookies
+              Events API 2.0 - Send TikTok Click ID (<code>ttclid</code>)
             </a>
-          </Link>{' '}
-          section.
+          </Link>
+          .
         </p>
       </Content>
     </ContextualHelp>
@@ -207,11 +216,14 @@ export default () => [
   [
     'userLocale',
     'Locale',
-    'The BCP 47 language identifier.',
+    '[For web and app events only] The BCP 47 language identifier.',
     false,
     <ContextualHelp>
       <Heading>Tip</Heading>
       <Content>
+        <p>
+          <strong>For web and app events only.</strong>
+        </p>
         <p>
           For reference, refer to{' '}
           <Link>

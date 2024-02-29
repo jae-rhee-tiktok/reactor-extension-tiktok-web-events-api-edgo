@@ -44,7 +44,7 @@ export default function ServerEventParametersFields() {
         </Text>
         <Link>
           <a
-            href="https://business-api.tiktok.com/portal/docs?id=1771100779668482"
+            href="https://business-api.tiktok.com/portal/docs?id=1771101151059969"
             target="_blank"
             rel="noreferrer"
           >

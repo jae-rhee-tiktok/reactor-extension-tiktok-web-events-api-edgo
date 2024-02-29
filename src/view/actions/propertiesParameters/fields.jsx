@@ -42,33 +42,19 @@ export default function PropertiesParametersFields() {
           <Heading>Tip</Heading>
           <Content>
             <p>
-              Use these parameters to include additional supported fields that
-              can be used for optimization.
-            </p>
-            <p>
-              Please note{' '}
-              <strong>
-                <code>value</code>
-              </strong>{' '}
-              and{' '}
-              <strong>
-                <code>currency</code>
-              </strong>{' '}
-              are required for{' '}
-              <strong>
-                <code>CompletePayment</code>
-              </strong>{' '}
-              events.
+              Information about the order and product associated with the event.
+              Providing this information allows Tiktok to help optimize your ads
+              performance.
             </p>
             <p>
               For more details, see the{' '}
               <Link>
                 <a
-                  href="https://ads.tiktok.com/marketing_api/docs?id=1741601162187777"
+                  href="https://business-api.tiktok.com/portal/docs?id=1771101151059969"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  documentation - Properties object parameters
+                  documentation page
                 </a>
               </Link>
               .

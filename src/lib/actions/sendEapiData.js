@@ -41,47 +41,47 @@ function buildContentsArray(contents) {
 
 const buildEapiRequest = async (getExtensionSettings, getSettings) => {
   const {
-    event,
-    timestamp,
-    eventId,
-    ip,
-    userAgent,
-    email,
-    phone,
-    ttp,
-    externalId,
-    leadId,
-    leadEventSource,
-    ttclid,
-    userLocale,
-    pageUrl,
-    pageReferrerUrl,
-    contents,
-    contentType,
-    currency,
-    value,
-    description,
-    query,
-    orderId,
-    shopId,
-    ldu,
-    price,
-    quantity,
-    contentId,
-    contentCategory,
-    contentName,
-    status,
-    appId,
-    appName,
-    appVersion,
-    callback,
-    campaignId,
-    adId,
-    creativeId,
-    isRetargeting,
-    attributed,
-    attributionType,
-    attributionProvider
+    event, // serverEventParameters
+    timestamp, // serverEventParameters
+    eventId, // serverEventParameters
+    ip, // userContextParameters
+    userAgent, // userContextParameters
+    email, // userContextParameters
+    phone, // userContextParameters
+    ttp, // userContextParameters
+    externalId, // userContextParameters
+    leadId, // leadEVentParameters
+    leadEventSource, // leadEVentParameters
+    ttclid, // userContextParameters
+    userLocale, // userContextParameters
+    pageUrl, // userContextParameters
+    pageReferrerUrl, // userContextParameters
+    contents, // propertiesParamters
+    contentType, // propertiesParamters
+    currency, // propertiesParamters
+    value, // propertiesParamters
+    description, // propertiesParamters
+    query, // propertiesParamters
+    orderId, // propertiesParamters
+    shopId, // propertiesParamters
+    ldu, // propertiesParamters
+    price, // [DEPRECATED] propertiesParamters
+    quantity, // [DEPRECATED] propertiesParamters
+    contentId, // [DEPRECATED] propertiesParamters
+    contentCategory, // [DEPRECATED] propertiesParamters
+    contentName, // [DEPRECATED] propertiesParamters
+    status, // [DEPRECATED] propertiesParamters
+    appId, //appEventParameters
+    appName, //appEventParameters
+    appVersion, //appEventParameters
+    callback, //appEventParameters
+    campaignId, //appEventParameters
+    adId, //appEventParameters
+    creativeId, //appEventParameters
+    isRetargeting, //appEventParameters
+    attributed, //appEventParameters
+    attributionType, //appEventParameters
+    attributionProvider //appEventParameters
   } = getSettings();
 
   const { eventSourceId, pixelCode, accessToken, eventSource } =
@@ -120,9 +120,9 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
         event_id: eventId,
         user: {
           ttclid: ttclid ? ttclid : undefined,
-          external_id: externalId ? formatEmail(externalId) : undefined,
-          phone: phone ? formatPhone(phone) : undefined,
-          email: email ? formatEmail(email) : undefined,
+          external_id: externalId ? await formatEmail(externalId) : undefined,
+          phone: phone ? await formatPhone(phone) : undefined,
+          email: await formatEmail(email),
           ttp: ttp ? ttp : undefined,
           ip: ip ? ip : undefined,
           user_agent: userAgent ? userAgent : undefined,
