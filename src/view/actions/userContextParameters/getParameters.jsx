@@ -163,6 +163,37 @@ export default () => [
     </ContextualHelp>
   ],
   [
+    'leadId',
+    'Lead ID',
+    'ID of TikTok leads.',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          <strong>Required for CRM events.</strong>
+        </p>
+        <p>
+          Every lead will have its <code>lead_id</code> when exported from
+          TikTok.
+        </p>
+        <p>
+          To obtain the ID of a lead, download the lead by using the endpoints{' '}
+          <code>/page/lead/task/</code> and{' '}
+          <code>/page/lead/task/download/</code>, or export the lead from TikTok
+          Leads Center, the first-party CRM platform located within TikTok Ads
+          Manager.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'leadEventSource',
+    'Lead Event Source',
+    'You can set this field to the name of your CRM system, such as HubSpot or Salesforce.',
+    false
+  ],
+  [
     'ttclid',
     'TikTok Click ID',
     'TikTok Click ID (ttclid) is a tracking parameter appended to a ' +
@@ -200,6 +231,30 @@ export default () => [
             </a>
           </Link>{' '}
           section.
+        </p>
+      </Content>
+    </ContextualHelp>
+  ],
+  [
+    'userLocale',
+    'Locale',
+    'The BCP 47 language identifier.',
+    false,
+    <ContextualHelp>
+      <Heading>Tip</Heading>
+      <Content>
+        <p>
+          For reference, refer to{' '}
+          <Link>
+            <a
+              href="https://www.rfc-editor.org/rfc/bcp/bcp47.txt"
+              rel="noreferrer"
+              target="_blank"
+            >
+              the IETF BCP 47 standardized code
+            </a>
+          </Link>
+          .
         </p>
       </Content>
     </ContextualHelp>

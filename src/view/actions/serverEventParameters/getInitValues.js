@@ -14,6 +14,7 @@ export default ({ settings }) => {
   return {
     event: settings?.event || '',
     timestamp: settings?.timestamp || '',
-    eventId: settings?.eventId || ''
+    eventId: settings?.eventId || '',
+    ldu: settings?.ldu || false
   };
 };

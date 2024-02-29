@@ -19,38 +19,6 @@ import eventNames from '../../utils/eventNames';
 
 export default () => [
   [
-    'eventSource',
-    'Event Source',
-    'AThis field is used to specify the type of events you are uploading through Events API.',
-    false,
-    <ContextualHelp>
-      <Heading>Tip</Heading>
-      <Content>
-        <p>Enum values</p>
-        <p>
-          <ul>
-            <li>
-              <code>web</code>: The events took place on your website and are
-              tracked by a Pixel Code.
-            </li>
-            <li>
-              <code>app</code>: The events took place on your app and are
-              tracked by a TikTok App ID.
-            </li>
-            <li>
-              <code>offline</code> : The conversions took place in a physical
-              store and are tracked by an Offline Event Set ID.
-            </li>
-            <li>
-              <code>crm</code>: The lead events took place in a CRM system and
-              are tracked by a CRM Event Set ID.
-            </li>
-          </ul>
-        </p>
-      </Content>
-    </ContextualHelp>
-  ],
-  [
     'event',
     'Event Name',
     'Events are defined as actions a website visitor takes ' +

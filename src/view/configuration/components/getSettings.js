@@ -10,4 +10,8 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export default ({ pixelCode, accessToken }) => ({ pixelCode, accessToken });
+export default ({ pixelCode, accessToken, eventSource }) => ({
+  pixelCode,
+  accessToken,
+  eventSource
+});

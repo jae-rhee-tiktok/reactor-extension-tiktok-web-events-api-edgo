@@ -21,5 +21,9 @@ export default (values) => {
     errors.accessToken = 'Please specify your access token.';
   }
 
+  if (!values.eventSource) {
+    errors.eventSource = 'Please specify your event source.';
+  }
+
   return errors;
 };

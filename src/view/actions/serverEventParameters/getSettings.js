@@ -13,7 +13,7 @@ governing permissions and limitations under the License.
 export default (values) => {
   const result = {};
 
-  ['event', 'timestamp', 'eventId'].forEach((v) => {
+  ['event', 'timestamp', 'eventId', 'ldu'].forEach((v) => {
     if (values[v]) {
       result[v] = values[v];
     }

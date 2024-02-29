@@ -99,6 +99,48 @@ export default function ConfigurationFields() {
           </ContextualHelp>
         }
       />
+
+      <WrappedTextField
+        name="eventSource"
+        component={TextField}
+        width="size-4600"
+        label="Event Source"
+        isRequired
+        necessityIndicator="label"
+        supportDataElement
+        contextualHelp={
+          <ContextualHelp>
+            <Heading>Tip</Heading>
+            <Content>
+              <p>
+                This field is used to specify the type of events you are
+                uploading through Events API.
+              </p>
+              <p>Enum values</p>
+              <p>
+                <ul>
+                  <li>
+                    <code>web</code>: The events took place on your website and
+                    are tracked by a Pixel Code.
+                  </li>
+                  <li>
+                    <code>app</code>: The events took place on your app and are
+                    tracked by a TikTok App ID.
+                  </li>
+                  <li>
+                    <code>offline</code> : The conversions took place in a
+                    physical store and are tracked by an Offline Event Set ID.
+                  </li>
+                  <li>
+                    <code>crm</code>: The lead events took place in a CRM system
+                    and and and and are tracked by a CRM Event Set ID.
+                  </li>
+                </ul>
+              </p>
+            </Content>
+          </ContextualHelp>
+        }
+      />
     </Flex>
   );
 }

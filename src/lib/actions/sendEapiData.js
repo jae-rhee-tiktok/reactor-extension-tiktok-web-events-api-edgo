@@ -50,7 +50,10 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     phone,
     ttp,
     externalId,
+    leadId,
+    leadEventSource,
     ttclid,
+    userLocale,
     pageUrl,
     pageReferrerUrl,
     contents,
@@ -64,7 +67,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     ldu
   } = getSettings();
 
-  const { pixelCode, accessToken } = getExtensionSettings();
+  const { pixelCode, accessToken, eventSource } = getExtensionSettings();
 
   const requestHeaders = {
     'Content-Type': 'application/json',
@@ -72,7 +75,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
   };
 
   const requestBody = {
-    event_source: '',
+    event_source: eventSource ? eventSource : 'web',
     event_source_id: pixelCode,
     partner_name: partner_name,
     data: [
@@ -87,7 +90,6 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
           external_id: externalId ? formatEmail(externalId) : undefined,
           phone: phone ? formatPhone(phone) : undefined,
           email: email ? formatEmail(email) : undefined,
-          lead_id: leadId ? leadId : undefined,
           ttp: ttp ? ttp : undefined,
           ip: ip ? ip : undefined,
           user_agent: userAgent ? userAgent : undefined,
@@ -106,6 +108,25 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
         page: {
           url: pageUrl ? pageUrl : undefined,
           referrer: pageReferrerUrl ? pageReferrerUrl : undefined
+        },
+        app: {
+          app_id: appId,
+          app_name: appName,
+          app_version: appVersion
+        },
+        ad: {
+          callback: callback,
+          campaign_id: campaignId,
+          ad_id: adId,
+          creative_id: creativeId,
+          is_retargeting: isRetargeting,
+          attributed: attributed,
+          attribution_type: attributionType,
+          attribution_provider: attributionProvider
+        },
+        lead: {
+          lead_id: leadId ? leadId : undefined,
+          lead_event_source: leadEventSource ? leadEventSource : undefined
         },
         limited_data_use: ldu ? true : false
       }

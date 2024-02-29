@@ -14,11 +14,14 @@ export default ({ settings }) => {
   return {
     ip: settings?.ip || '',
     userAgent: settings?.userAgent || '',
-    email: settings?.email || '',
-    phone: settings?.phone || '',
+    email: settings?.email || [],
+    phone: settings?.phone || [],
     ttp: settings?.ttp || '',
-    externalId: settings?.externalId || '',
+    externalId: settings?.externalId || [],
+    leadId: settings?.leadId || '',
+    leadEventSource: settings?.leadEventSource || '',
     ttclid: settings?.ttclid || '',
+    userLocale: settings?.userLocale || '',
     pageUrl: settings?.pageUrl || '',
     pageReferrerUrl: settings?.pageReferrerUrl || ''
   };

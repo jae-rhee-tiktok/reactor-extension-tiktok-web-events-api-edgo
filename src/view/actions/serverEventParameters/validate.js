@@ -21,9 +21,5 @@ export default (values) => {
     errors.timestamp = 'Please provide an event timestamp.';
   }
 
-  if (!values.pageUrl) {
-    errors.pageUrl = 'Please provide the event page URL.';
-  }
-
   return errors;
 };

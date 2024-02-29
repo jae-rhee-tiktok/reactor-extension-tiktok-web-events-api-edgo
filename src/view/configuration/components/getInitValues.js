@@ -12,9 +12,10 @@ governing permissions and limitations under the License.
 
 export default (initInfo) => {
   const { settings } = initInfo;
-  const { pixelCode = '', accessToken = '' } = settings || {};
+  const { pixelCode = '', accessToken = '', eventSource = '' } = settings || {};
   return {
     accessToken,
-    pixelCode
+    pixelCode,
+    eventSource
   };
 };
