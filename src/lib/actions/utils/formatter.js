@@ -21,7 +21,7 @@ async function sha256(str) {
 }
 
 function checkSha256(str) {
-  return str.length === 64 && /^[0-9A-Za-z]*$/.test(data);
+  return str.length === 64 && /^[0-9A-Za-z]*$/.test(str);
 }
 
 module.exports.formatEmail = async function (email) {

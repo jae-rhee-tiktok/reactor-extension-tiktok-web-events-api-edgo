@@ -29,29 +29,38 @@ import getPropertiesParametersInitValues from './propertiesParameters/getInitVal
 import getPropertiesParametersSettings from './propertiesParameters/getSettings';
 import validatePropertiesParametersFields from './propertiesParameters/validate';
 
+import ContentsParametersFields from './contentsParameters/fields';
+import getContentsParametersInitValues from './contentsParameters/getInitValues';
+import getContentsParametersSettings from './contentsParameters/getSettings';
+import validateContentsParametersFields from './contentsParameters/validate';
+
 export default function SendEapiData() {
   return (
     <ExtensionView
       getInitialValues={({ initInfo }) => ({
         ...getServerEventParametersInitValues(initInfo),
         ...getUserContextParametersInitValues(initInfo),
-        ...getPropertiesParametersInitValues(initInfo)
+        ...getPropertiesParametersInitValues(initInfo),
+        ...getContentsParametersInitValues(initInfo)
       })}
       getSettings={({ values }) => ({
         ...getServerEventParametersSettings(values),
         ...getUserContextParametersSettings(values),
-        ...getPropertiesParametersSettings(values)
+        ...getPropertiesParametersSettings(values),
+        ...getContentsParametersSettings(values)
       })}
       validate={(values) => ({
         ...validateServerEventParametersFields(values),
         ...validateUserContextParametersFields(values),
-        ...validatePropertiesParametersFields(values)
+        ...validatePropertiesParametersFields(values),
+        ...validateContentsParametersFields(values)
       })}
       render={() => (
         <>
           <ServerEventParametersFields />
           <UserContextParametersFields />
           <PropertiesParametersFields />
+          <ContentsParametersFields />
         </>
       )}
     />

@@ -42,7 +42,8 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     value,
     description,
     query,
-    status
+    status,
+    data
   } = getSettings();
 
   const { pixelCode, accessToken } = getExtensionSettings();
@@ -51,6 +52,20 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     'Content-Type': 'application/json',
     'Access-Token': accessToken
   };
+
+  const contents =
+    Array.isArray(data) && data.length > 0
+      ? data
+      : [
+          {
+            price: price ? price : undefined,
+            quantity: quantity ? quantity : undefined,
+            content_type: contentType ? contentType : undefined,
+            content_id: contentId ? contentId : undefined,
+            content_category: contentCategory ? contentCategory : undefined,
+            content_name: contentName ? contentName : undefined
+          }
+        ];
 
   const requestBody = {
     pixel_code: pixelCode,
@@ -76,16 +91,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
       ip: ip ? ip : undefined
     },
     properties: {
-      contents: [
-        {
-          price: price ? price : undefined,
-          quantity: quantity ? quantity : undefined,
-          content_type: contentType ? contentType : undefined,
-          content_id: contentId ? contentId : undefined,
-          content_category: contentCategory ? contentCategory : undefined,
-          content_name: contentName ? contentName : undefined
-        }
-      ],
+      contents: contents,
       currency: currency ? currency : undefined,
       value: value ? value : undefined,
       description: description ? description : undefined,
