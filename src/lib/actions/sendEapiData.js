@@ -60,7 +60,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
           {
             price: price ? price : undefined,
             quantity: quantity ? quantity : undefined,
-            content_type: contentType ? contentType : undefined,
+            content_category: contentCategory ? contentCategory : undefined,
             content_id: contentId ? contentId : undefined,
             content_category: contentCategory ? contentCategory : undefined,
             content_name: contentName ? contentName : undefined
@@ -92,6 +92,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
     },
     properties: {
       contents: contents,
+      content_type: contentType ? contentType : 'product',
       currency: currency ? currency : undefined,
       value: value ? value : undefined,
       description: description ? description : undefined,
@@ -103,7 +104,7 @@ const buildEapiRequest = async (getExtensionSettings, getSettings) => {
   return {
     method: 'POST',
     headers: requestHeaders,
-    body: requestBody
+    body: JSON.stringify(requestBody)
   };
 };
 

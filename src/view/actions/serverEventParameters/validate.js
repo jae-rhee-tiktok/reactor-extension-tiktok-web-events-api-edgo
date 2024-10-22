@@ -23,8 +23,8 @@ export default (values) => {
 
   if (!values.pageUrl) {
     errors.pageUrl = 'Please provide the event page URL.';
-  } else if (!values.pageUrl.match(/https?:\/\//)) {
-    errors.pageUrl = 'The URL must begin with http://, https://.';
+    // } else if (!values.pageUrl.match(/https?:\/\//)) {
+    //   errors.pageUrl = 'The URL must begin with http://, https://.';
   }
 
   return errors;

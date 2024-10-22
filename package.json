@@ -1,11 +1,11 @@
 {
   "name": "@adobe/reactor-extension-cloud-connector-edge",
-  "version": "1.0.5",
+  "version": "1.0.9",
   "description": "Adobe Experience Platform event forwarding extension to make fetch calls to third-party endpoints.",
   "author": {
-    "name": "Adobe Systems",
-    "url": "http://adobe.com",
-    "email": "reactor@adobe.com"
+    "name": "TikTok",
+    "url": "http://www.tiktok.com",
+    "email": "adobeeng@bytedance.com"
   },
   "license": "Apache 2.0",
   "publishConfig": {
